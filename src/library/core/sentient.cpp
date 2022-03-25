@@ -1,5 +1,6 @@
 
-void example model
+
+void empty()
 {
-    
+
 }

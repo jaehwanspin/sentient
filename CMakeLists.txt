@@ -23,6 +23,7 @@ conan_cmake_run(CONANFILE conanfile.txt
 option(SENTIENT_ENABLE_SHARED "build shared library" OFF)
 option(SENTIENT_BUILD_CLI "build CLI tool" ON)
 option(SENTIENT_BUILD_CORE "build core library" ON)
+option(SENTIENT_BUILD_EXAMPLES "build examples" ON)
 
 include_directories(${CMAKE_INCLUDE_PATH}
                     ${CONAN_INCLUDE_DIRS}
