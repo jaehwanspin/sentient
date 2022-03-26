@@ -1,11 +1,7 @@
 #ifndef __SENTIENT_CORE_HPP__
 #define __SENTIENT_CORE_HPP__
 
-namespace sentient
-{
-
-
-
-}
+#include <sentient/core/types.hpp>
+#include <sentient/core/type_traits.hpp>
 
 #endif

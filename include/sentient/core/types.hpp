@@ -28,6 +28,10 @@ namespace sentient
 	using f32_t = float;
 	using f64_t = double;
 
+	using crc8_t = uint8_t;
+	using crc16_t = uint16_t;
+	using crc32_t = uint32_t;
+
 	template <typename _Tp, size_t _Size>
 	using arr_t = _Tp[_Size];
 	template <size_t _Size>
