@@ -1,6 +1,17 @@
 #ifndef __SENTIENT_CORE_TYPE_TRAITS_HPP__
 #define __SENTIENT_CORE_TYPE_TRAITS_HPP__
 
+/**
+ * @file type_traits.hpp
+ * @author Jin (jaehwanspin@gmail.com)
+ * @brief Type(Model) attributes utilities
+ * @version 0.1
+ * @date 2022-03-26
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include <type_traits>
 
 namespace sentient
@@ -8,21 +19,28 @@ namespace sentient
 namespace type_traits
 {
 
-/*
- * @author Jin
- * @brief 
- **/
+/**
+ * @brief basic sentient model attribute
+ * 
+ */
 struct sentient_model_attr { using base_type = sentient_model_attr; };
 
-struct packed_attr : sentient_model_attr { using packed_attr_type = packed_attr; };
-
+/**
+ * @brief static sized model attribute
+ * 
+ */
 struct static_model_attr : sentient_model_attr { using model_flexiblity_attr_type = static_model_attr; };
+
+/**
+ * @brief dynamic sized model attribute
+ * 
+ */
 struct dynamic_model_attr : sentient_model_attr { using model_flexiblity_attr_type = dynamic_model_attr; };
 
-template <const char* _DatabaseName>
+template <char ... _DatabaseName>
 struct dbms_compatible_attr : sentient_model_attr
 {
-	static constexpr const char* database_name = _DatabaseName;
+	static constexpr const char database_name[sizeof...(_DatabaseName)] = { (_DatabaseName)... };
 	using dbms_compatibility_attr_type = dbms_compatible_attr;
 };
 
@@ -44,17 +62,19 @@ struct is_dynamic_model :
 template <typename _Model>
 constexpr inline bool is_dynamic_model_v = is_dynamic_model<_Model>::value;
 
-template <typename _Model, const char* _Model::database_name>
+template <typename _Model, char ... _DatabaseName>
 struct is_dbms_compatible_model :
-	std::is_same<typename _Model<database_name>::dbms_compatibility_attr_type, dbms_compatible_attr> { };
-template <typename _Model, const char* _Model::database_name>
-constexpr inline bool is_dbms_compatible_model_v = is_dbms_compatible_model<_Model, database_name>::value;
+	std::is_same<typename _Model::dbms_compatibility_attr_type,
+				 dbms_compatible_attr<_DatabaseName ... >> { };
+template <typename _Model, char ... _DatabaseName>
+constexpr inline bool is_dbms_compatible_model_v =
+	is_dbms_compatible_model<_Model, _DatabaseName ...>::value;
 
 
 namespace concepts
 {
 	
-}
-}
-}
+} // concepts
+} // type_traits
+} // sentient
 #endif
