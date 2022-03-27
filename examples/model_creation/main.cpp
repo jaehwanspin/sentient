@@ -44,8 +44,6 @@ struct example_dbms_compat_model :
 };
 #pragma pack(pop)
 
-struct fucking {};
-
 template <typename _Model>
 struct is_dbms_compatible_model :
 	std::is_same<typename _Model::dbms_compatibility_attr_type,
