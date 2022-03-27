@@ -158,8 +158,9 @@ struct is_stl_spec_string : std::false_type { };
 namespace protocol_traits
 {
 
-template <typename _Tp>
-struct protocol_stx { using stx_type = _Tp };
+template <typename _Tp, _Tp _Val>
+struct protocol_stx
+{ using stx_type = _Tp; static constexpr stx_type stx_value = _Val; };
 template <typename _Tp>
 struct protocol_from { using from_type = _Tp; };
 template <typename _Tp>
@@ -170,8 +171,9 @@ template <typename _Tp>
 struct protocol_command_code { using command_code_type = _Tp; };
 template <typename _Tp>
 struct protocol_crc { using crc_type = _Tp; };
-template <typename _Tp>
-struct protocol_etx { using etx_type = _Tp; };
+template <typename _Tp, _Tp _Val>
+struct protocol_etx 
+{ using etx_type = _Tp; static constexpr etx_type etx_value = _Val; };
 
 }
 

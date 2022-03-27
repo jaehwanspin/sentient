@@ -1,0 +1,11 @@
+namespace example
+{
+
+protocol my_protocol
+{
+    stx {
+        
+    }
+}
+
+}

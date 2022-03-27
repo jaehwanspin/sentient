@@ -2,6 +2,7 @@
 #include <sentient/core/type_traits.hpp>
 
 #include <boost/hana/define_struct.hpp>
+#include <boost/asio.hpp>
 
 namespace snt = sentient;
 
@@ -44,8 +45,6 @@ struct example_dbms_compat_model :
 };
 #pragma pack(pop)
 
-struct fucking {};
-
 template <typename _Model>
 struct is_dbms_compatible_model :
 	std::is_same<typename _Model::dbms_compatibility_attr_type,
@@ -54,7 +53,7 @@ struct is_dbms_compatible_model :
 #include <vector>
 int main(int argc, char** argv)
 {
-    example_static_model m{ {}, 1, "fuck", 30, "01040589050" };
+    example_static_model m { {}, 1, "fuck", 30, "01040589050" };
     
     constexpr auto sz = sizeof(std::tuple<int, int>);
 
@@ -65,6 +64,8 @@ int main(int argc, char** argv)
     constexpr auto t4 =
         sentient::type_traits::is_dbms_compatible_model_v<example_dbms_compat_model>;
     constexpr auto t5 = sentient::type_traits::is_stl_spec_container_v<std::vector<int>>;
+
+    
 
     return 0;
 }

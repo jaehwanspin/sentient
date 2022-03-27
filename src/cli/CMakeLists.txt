@@ -1,4 +1,7 @@
 set(SENTIENT_CLI_SRC
-    main.cpp)
+    main.cpp
+    framework.cpp
+    arg_parser.cpp
+    filesystem.cpp)
 add_executable(sentientc ${SENTIENT_CLI_SRC})
 target_link_libraries(sentientc ${CONAN_LIBS})
