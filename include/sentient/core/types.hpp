@@ -14,6 +14,8 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <map>
+#include <memory>
 
 namespace sentient
 {
@@ -40,6 +42,11 @@ namespace sentient
 	using str16_t = arr_t<char16_t, _Size>;
 	template <size_t _Size>
 	using str32_t = arr_t<char32_t, _Size>;
+
+	template <typename _Deleter = std::default_delete<std::byte>>
+	using byte_array_t = std::unique_ptr<std::byte[], _Deleter>;
+	template <typename _Deleter = std::default_delete<std::byte>>
+	using byte_buffer_t = std::pair<byte_array_t<_Deleter>, size_t>;
 }
 
 #endif

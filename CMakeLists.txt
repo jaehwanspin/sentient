@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.10)
-project(sentient CXX)
+project(sentient
+    VERSION 0.0.1.0
+    DESCRIPTION "generic serialization library, tools"
+    HOMEPAGE_URL "https://github.com/jaehwanspin/sentient"
+    LANGUAGES C CXX)
 
 set(SENTIENT_MSG_PREFIX "[SENTIENT]")
 
@@ -24,6 +28,12 @@ option(SENTIENT_ENABLE_SHARED "build shared library" OFF)
 option(SENTIENT_BUILD_CLI "build CLI tool" ON)
 option(SENTIENT_BUILD_CORE "build core library" ON)
 option(SENTIENT_BUILD_EXAMPLES "build examples" ON)
+option(SENTIENT_BUILD_CSHARP "build C# library" OFF)
+option(SENTIENT_BUILD_JAVA "build java library" OFF)
+option(SENTIENT_BUILD_KOTLIN "build kotlin library" OFF)
+option(SENTIENT_BUILD_PYTHON "build python library" OFF)
+option(SENTIENT_BUILD_JAVASCRIPT "build javascript library" OFF)
+option(SENTIENT_BUILD_TYPESCRIPT "build typescript library" OFF)
 
 include_directories(${CMAKE_INCLUDE_PATH}
                     ${CONAN_INCLUDE_DIRS}

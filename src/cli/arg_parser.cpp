@@ -14,12 +14,12 @@ arg_parser::arg_parser(const std::string& opts_title) :
 {  
 }
 
-popts::variables_map& const arg_parser::vars_map()
+popts::variables_map& arg_parser::vars_map()
 {
     return this->vars_map_;
 }
 
-popts::options_description& const arg_parser::opts_desc()
+popts::options_description& arg_parser::opts_desc()
 {
     return this->opts_desc_;
 }
@@ -48,7 +48,7 @@ void arg_parser::parse(int argc, char** argv)
             this->opts_desc_).positional(this->pos_opts_desc_).run(),
             this->vars_map_);
     popts::notify(this->vars_map_);
-    if (!vars_map_.size()) this->success_ = false;
+    if (!vars_map_.size()) this->success_ = true;
 }
 
 }
