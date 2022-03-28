@@ -48,7 +48,7 @@ void arg_parser::parse(int argc, char** argv)
             this->opts_desc_).positional(this->pos_opts_desc_).run(),
             this->vars_map_);
     popts::notify(this->vars_map_);
-    if (!vars_map_.size()) this->success_ = true;
+    if (vars_map_.size()) this->success_ = true;
 }
 
 }

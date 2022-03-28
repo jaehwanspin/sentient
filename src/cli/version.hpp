@@ -17,6 +17,22 @@ namespace sentient
 {
 namespace compiler
 {
+
+constexpr const char* compiler_version_base =
+"sentient compiler\n"
+"\n"
+"version : "
+SENTIENT_COMPILER_VERSION
+"\n"
+"build   : "
+SENTIENT_COMPILER_BUILD_ENV
+"\n"
+"license : "
+SENTIENT_COMPILER_LICENSE
+"\n";
+
+constexpr const char* options_output = "see options\n";
+
 }
 }
 
